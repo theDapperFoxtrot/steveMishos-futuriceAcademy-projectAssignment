@@ -4,7 +4,29 @@ body {
   text-align: center;
 }
 
+a {
+  color: #f1f1f1;
+}
+
+a:hover {
+  color: #7e11d8;
+}
+
 p {
   color: #f1f1f1;
   text-decoration: none;
+}
+
+.title {
+  text-decoration: none;
+}
+
+.a11y {
+  position: absolute;
+  left: -9999px;
+}
+
+.container {
+  width: 80%;
+  margin: 2rem auto;
 }/*# sourceMappingURL=App.css.map */
