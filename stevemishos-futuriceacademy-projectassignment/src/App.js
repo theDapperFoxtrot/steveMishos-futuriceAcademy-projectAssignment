@@ -59,18 +59,20 @@ function App() {
           !each.fork ? (
             <>
               <hr />
-              <h3 key={index}>Name: {each.name}</h3>
-              <h4 key={index}>
+              <h3 key={`name.${index}`}>Name: {each.name}</h3>
+              <h4 key={`description.${index}`}>
                 Description: {each.description ? each.description : "N/A"}
               </h4>
-              <h5>Updated at: {each.updated_at}</h5>
-              <a href={each.html_url}>
-                <h4 key={index}>{each.html_url}</h4>
+              <h5 key={`updated_at.${index}`}>Updated at: {each.updated_at}</h5>
+              <a key={`html_url.${index}`} href={each.html_url}>
+                <h4>{each.html_url}</h4>
               </a>
-              <a href={each.homepage}>
-                {each.homepage
-                  ? each.homepage
-                  : "This demo currently is not live."}
+              <a key={`homepage.${index}`} href={each.homepage}>
+                {each.homepage ? (
+                  each.homepage
+                ) : (
+                  <p>This demo currently is not live.</p>
+                )}
               </a>
             </>
           ) : null,
