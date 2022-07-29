@@ -13,7 +13,11 @@ function GithubUser({ name, avatar }) {
         </a>
       </h1>
       <a href="https://github.com/theDapperFoxtrot">
-        <img height="200px" src={avatar} alt="" />
+        <img
+          height="200px"
+          src={avatar}
+          alt="the dapper foxtrot sporting a happy smile! click to visit their git hub"
+        />
       </a>
       <h2>(Excluding Forks - By Last Updated)</h2>
     </div>
