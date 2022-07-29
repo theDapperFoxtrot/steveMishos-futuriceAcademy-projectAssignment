@@ -1,3 +1,5 @@
+// I elected to create a portfolio-style web app to showcase my personal repos. This is a very practical addition to my portfolio website that will allow the list to dynamically populate and order themselves based on my activity. I loved the inspiration provided by the assignment! I can't wait to learn more and take ideas like this even farther!
+
 import "./App.css";
 import { useState, useEffect } from "react";
 
@@ -7,13 +9,13 @@ function GithubUser({ name, avatar }) {
     <div>
       <h1>
         <a href="https://github.com/theDapperFoxtrot">
-          {name}'s GitHub at-a-glance
+          {name}'s (Steve) GitHub at-a-glance
         </a>
       </h1>
-      <h2>(Excluding Forks - Alpha Order)</h2>
       <a href="https://github.com/theDapperFoxtrot">
         <img height="200px" src={avatar} alt="" />
       </a>
+      <h2>(Excluding Forks - By Last Updated)</h2>
     </div>
   );
 }
@@ -31,7 +33,7 @@ function App() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://api.github.com/users/theDapperFoxtrot/repos`)
+    fetch(`https://api.github.com/users/theDapperFoxtrot/repos?sort=updated`)
       .then((response) => response.json())
       .then(setData)
       .then(() => setLoading(false))
@@ -56,6 +58,7 @@ function App() {
           //If the repo is not a fork, render. Otherwise, do not display.
           !each.fork ? (
             <>
+              <hr />
               <h3 key={index}>Name: {each.name}</h3>
               <h4 key={index}>
                 Description: {each.description ? each.description : "N/A"}
