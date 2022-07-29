@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 
+// Rendering a header component
 function GithubUser({ name, avatar }) {
   return (
     <div>
@@ -9,6 +10,7 @@ function GithubUser({ name, avatar }) {
           {name}'s GitHub at-a-glance
         </a>
       </h1>
+      <h2>(Excluding Forks - Alpha Order)</h2>
       <a href="https://github.com/theDapperFoxtrot">
         <img height="200px" src={avatar} alt="" />
       </a>
@@ -16,10 +18,12 @@ function GithubUser({ name, avatar }) {
   );
 }
 
+// Rendering a repo display of all my personal public repos (excluding forks)
 function GithubUserRepos({ repos }) {
   return <div>{repos}</div>;
 }
 
+// The main app component
 function App() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -34,9 +38,10 @@ function App() {
       .catch(setError);
   }, []);
 
-  if (loading) return <h1>Loading...</h1>;
+  //Loading prompt; Error catching / null data contingencies
+  if (loading) return <h2>Loading...</h2>;
   if (error) return <pre>{JSON.stringify(error)}</pre>;
-  if (!data) return null;
+  if (!data) return <h2>Something went wrong! Terribly sorry.</h2>;
 
   return (
     <>
@@ -44,20 +49,24 @@ function App() {
         name={data[0].owner.login}
         avatar={data[0].owner.avatar_url}
       />
+
+      {/* Mapping over my repos to dynamically display them */}
       <GithubUserRepos
-        repos={data.map((each, index) => (
-          <>
-            <h3 key={index}>
-              #{index + 1} Project: {each.name}
-            </h3>
-            <h4 key={index}>
-              Description: {each.description ? each.description : "N/A"}
-            </h4>
-            <a href={each.html_url}>
-              <h4 key={index}>Repo Link: {each.html_url}</h4>
-            </a>
-          </>
-        ))}
+        repos={data.map((each, index) =>
+          //If the repo is not a fork, render. Otherwise, do not display.
+          !each.fork ? (
+            <>
+              <h3 key={index}>Name: {each.name}</h3>
+              <h4 key={index}>
+                Description: {each.description ? each.description : "N/A"}
+              </h4>
+              <h5>Updated at: {each.updated_at}</h5>
+              <a href={each.html_url}>
+                <h4 key={index}>{each.html_url}</h4>
+              </a>
+            </>
+          ) : null,
+        )}
       />
     </>
   );
