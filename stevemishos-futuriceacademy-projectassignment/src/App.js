@@ -67,6 +67,11 @@ function App() {
               <a href={each.html_url}>
                 <h4 key={index}>{each.html_url}</h4>
               </a>
+              <a href={each.homepage}>
+                {each.homepage
+                  ? each.homepage
+                  : "This demo currently is not live."}
+              </a>
             </>
           ) : null,
         )}
