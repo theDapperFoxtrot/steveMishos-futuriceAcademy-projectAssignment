@@ -8,7 +8,7 @@ function GithubUser({ name, avatar }) {
   return (
     <div>
       <h1>
-        <a href="https://github.com/theDapperFoxtrot">
+        <a className="title" href="https://github.com/theDapperFoxtrot">
           {name}'s (Steve) GitHub at-a-glance
         </a>
       </h1>
@@ -19,7 +19,11 @@ function GithubUser({ name, avatar }) {
           alt="the dapper foxtrot sporting a happy smile! click to visit their git hub"
         />
       </a>
-      <h2>(Excluding Forks - By Last Updated)</h2>
+      <h2 tabindex="0">(Excluding Forks - By Last Updated)</h2>
+      <h2 className="a11y">
+        For my accessibility friends, these repos will be listed in alphabetical
+        order by name.
+      </h2>
     </div>
   );
 }
@@ -61,24 +65,28 @@ function App() {
         repos={data.map((each, index) =>
           //If the repo is not a fork, render. Otherwise, do not display.
           !each.fork ? (
-            <>
+            <div className="container">
               <hr />
-              <h3 key={`name.${index}`}>Name: {each.name}</h3>
-              <h4 key={`description.${index}`}>
+              <h3 tabindex="0" key={`name.${index}`}>
+                Name: {each.name}
+              </h3>
+              <h4 tabindex="0" key={`description.${index}`}>
                 Description: {each.description ? each.description : "N/A"}
               </h4>
-              <h5 key={`updated_at.${index}`}>Updated at: {each.updated_at}</h5>
-              <a key={`html_url.${index}`} href={each.html_url}>
-                <h4>{each.html_url}</h4>
+              <h5 tabindex="0" key={`updated_at.${index}`}>
+                Updated at: {each.updated_at}
+              </h5>
+              <a tabindex="0" key={`html_url.${index}`} href={each.html_url}>
+                <h4 tabindex="0">{each.html_url}</h4>
               </a>
-              <a key={`homepage.${index}`} href={each.homepage}>
+              <a tabindex="0" key={`homepage.${index}`} href={each.homepage}>
                 {each.homepage ? (
                   each.homepage
                 ) : (
                   <p>This demo currently is not live.</p>
                 )}
               </a>
-            </>
+            </div>
           ) : null,
         )}
       />
