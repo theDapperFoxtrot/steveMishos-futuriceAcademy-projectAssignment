@@ -8,11 +8,20 @@ function GithubUser({ name, avatar }) {
   return (
     <div>
       <h2>
-        <a className="repoLink" href="https://github.com/theDapperFoxtrot">
+        <a
+          className="repoLink"
+          href="https://github.com/theDapperFoxtrot"
+          target="_blank"
+          rel="noreferrer"
+        >
           {name}'s (Steve) GitHub at-a-glance
         </a>
       </h2>
-      <a href="https://github.com/theDapperFoxtrot">
+      <a
+        href="https://github.com/theDapperFoxtrot"
+        target="_blank"
+        rel="noreferrer"
+      >
         <img
           height="200px"
           src={avatar}
@@ -39,6 +48,24 @@ function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const convert = (time) => {
+    let date = new Date(time);
+
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let second = date.getSeconds();
+
+    return (
+      <>
+        <div>{`${year}-${month}-${day}`}</div>
+        <div>{`@ ${hour}:${minute}:${second}`}</div>
+      </>
+    );
+  };
+
   const handleHamburger = () => {
     const hamburger = document.querySelector("#hamburger");
     const menu = document.querySelector("#menu");
@@ -64,7 +91,14 @@ function App() {
   return (
     <>
       <header>
-        <h1 className="title">DapperFans.com</h1>
+        <a
+          className="titleLink"
+          href="https://dapperfans.com/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <h1 className="title">DapperFans.com</h1>
+        </a>
         <nav id="menu" className="menu">
           <ul>
             <li>
@@ -104,19 +138,40 @@ function App() {
           !each.fork ? (
             <div className="container">
               <hr />
+              <h5 tabindex="0" key={`pushed_at.${index}`}>
+                Pushed at: {convert(each.pushed_at)}
+              </h5>
               <h3 tabindex="0" key={`name.${index}`}>
-                Name: {each.name}
+                <a
+                  tabindex="0"
+                  key={`html_url.${index}`}
+                  href={each.html_url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Name: {each.name}
+                </a>
               </h3>
               <h4 tabindex="0" key={`description.${index}`}>
                 Description: {each.description ? each.description : "N/A"}
               </h4>
-              <h5 tabindex="0" key={`pushed_at.${index}`}>
-                Pushed at: {each.pushed_at}
-              </h5>
-              <a tabindex="0" key={`html_url.${index}`} href={each.html_url}>
-                <h4 tabindex="0">{each.html_url}</h4>
+              <a
+                tabindex="0"
+                key={`html_url.${index}`}
+                href={each.html_url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <h4 tabindex="0">Repo Link</h4>
               </a>
-              <a tabindex="0" key={`homepage.${index}`} href={each.homepage}>
+              <h4 className="demoText">Demo:</h4>
+              <a
+                tabindex="0"
+                key={`homepage.${index}`}
+                href={each.homepage}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {each.homepage ? (
                   each.homepage
                 ) : (
