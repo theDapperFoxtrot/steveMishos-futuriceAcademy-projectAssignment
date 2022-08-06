@@ -315,3 +315,9 @@ footer p {
 .socialImage {
   width: 30px;
 }
+
+@media (min-width: 345px) {
+  .title {
+    text-align: center;
+  }
+}

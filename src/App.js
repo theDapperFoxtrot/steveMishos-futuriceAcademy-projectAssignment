@@ -91,12 +91,7 @@ function App() {
   return (
     <>
       <header>
-        <a
-          className="titleLink"
-          href="https://dapperfans.com/"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a className="titleLink" href="https://dapperfans.com/">
           <h1 className="title">DapperFans.com</h1>
         </a>
         <nav id="menu" className="menu">
