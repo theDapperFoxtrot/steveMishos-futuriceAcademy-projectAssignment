@@ -7,11 +7,11 @@ import { useState, useEffect } from "react";
 function GithubUser({ name, avatar }) {
   return (
     <div>
-      <h1>
-        <a className="title" href="https://github.com/theDapperFoxtrot">
+      <h2>
+        <a className="repoLink" href="https://github.com/theDapperFoxtrot">
           {name}'s (Steve) GitHub at-a-glance
         </a>
-      </h1>
+      </h2>
       <a href="https://github.com/theDapperFoxtrot">
         <img
           height="200px"
@@ -39,6 +39,14 @@ function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const handleHamburger = () => {
+    const hamburger = document.querySelector("#hamburger");
+    const menu = document.querySelector("#menu");
+    hamburger.classList.toggle("hamburger-active");
+    hamburger.classList.toggle("hamburger-background");
+    menu.classList.toggle("menu-active");
+  };
+
   useEffect(() => {
     setLoading(true);
     fetch(`https://api.github.com/users/theDapperFoxtrot/repos?sort=pushed`)
@@ -55,6 +63,35 @@ function App() {
 
   return (
     <>
+      <header>
+        <h1 className="title">DapperFans.com</h1>
+        <nav id="menu" className="menu">
+          <ul>
+            <li>
+              <a href="https://dapperfans.com/" id="homeNav">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="https://dapperfans.com/pages/aboutme" id="aboutNav">
+                About Steve
+              </a>
+            </li>
+            <li>
+              <a href="https://kaunis-alku.netlify.app/" id="portfolioNav">
+                Portfolio
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div
+          id="hamburger"
+          className="hamburger-container"
+          onClick={handleHamburger}
+        >
+          <div className="hamburger-menu"></div>
+        </div>
+      </header>
       <GithubUser
         name={data[0].owner.login}
         avatar={data[0].owner.avatar_url}
@@ -90,6 +127,100 @@ function App() {
           ) : null,
         )}
       />
+      <footer class="mainFooter">
+        <h2>Contact Me!</h2>
+        <form name="contact" method="POST" data-netlify="true">
+          <p>
+            <label class="formLabels">
+              Your Name: <input type="text" name="name" />
+            </label>
+          </p>
+          <p>
+            <label class="formLabels">
+              Your Email: <input type="email" name="email" />
+            </label>
+          </p>
+          <p class="formRoleSelect">
+            <label class="formLabels">
+              Your Role:
+              <select name="role[]">
+                <option value="client">Client</option>
+                <option value="follower">Follower</option>
+                <option value="recruiter">Recruiter</option>
+              </select>
+            </label>
+          </p>
+          <p class="formMessage">
+            <label class="formLabels">
+              Message: <textarea name="message"></textarea>
+            </label>
+          </p>
+          <p>
+            <button class="formButton" type="submit">
+              Send
+            </button>
+          </p>
+        </form>
+
+        <div class="socialsContainer">
+          <ul>
+            <a
+              href="https://twitter.com/FoxtrotDapper"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <li class="socialIcon">
+                <img
+                  class="socialImage"
+                  src="./svg/twitter-brands.svg"
+                  alt="the dapper foxtrot twitter"
+                />
+              </li>
+            </a>
+            <a
+              href="https://github.com/theDapperFoxtrot"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <li class="socialIcon">
+                <img
+                  class="socialImage"
+                  src="./svg/github-brands.svg"
+                  alt="the dapper foxtrot git hub"
+                />
+              </li>
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UC3CshKcydQEdd2zMfd9UsAg"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <li class="socialIcon">
+                <img
+                  class="socialImage"
+                  src="./svg/icons8-youtube-64.svg"
+                  alt="the dapper foxtrot on YouTube"
+                />
+              </li>
+            </a>
+            <a
+              href="https://www.twitch.tv/thedapperfoxtrot"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <li class="socialIcon">
+                <img
+                  class="socialImage"
+                  src="./svg/icons8-twitch-50.svg"
+                  alt="the dapper foxtrot on Twitch"
+                />
+              </li>
+            </a>
+          </ul>
+        </div>
+        <p>© Copyright 2022 The Dapper Foxtrot. All Rights Reserved.</p>
+        <p class="tinyFont">Made with HTML, CSS, and Vanilla JS</p>
+      </footer>
     </>
   );
 }

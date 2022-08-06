@@ -1,7 +1,12 @@
+html {
+  font-size: 62.5%;
+}
+
 body {
   background-color: black;
   color: #f1f1f1;
   text-align: center;
+  background: radial-gradient(ellipse at top, rgb(0, 0, 0) 60%, #5e0cc2 100%);
 }
 
 a {
@@ -18,6 +23,12 @@ p {
 }
 
 .title {
+  font-size: 3rem;
+  text-align: left;
+  margin: 0 0 0 1rem;
+}
+
+.repoLink {
   text-decoration: none;
 }
 
@@ -29,4 +40,183 @@ p {
 .container {
   width: 80%;
   margin: 2rem auto;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 9999rem;
+}
+
+.menu-active {
+  top: calc(50vh - 10rem);
+  left: calc(50vw - 14rem);
+}
+
+.menu ul {
+  list-style: none;
+  padding: 5rem;
+  background-color: #000;
+  border-radius: 10%;
+}
+
+.menu li {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.menu a {
+  font-size: 3rem;
+  -webkit-text-decoration: underline rgba(241, 241, 241, 0);
+  text-decoration: underline rgba(241, 241, 241, 0);
+  color: #f1f1f1;
+  transition: -webkit-text-decoration 0.3s ease-in;
+  transition: text-decoration 0.3s ease-in;
+  transition: text-decoration 0.3s ease-in, -webkit-text-decoration 0.3s ease-in;
+  white-space: nowrap;
+}
+
+.menu a:hover,
+.menu a:focus {
+  -webkit-text-decoration: underline #f1f1f1;
+  text-decoration: underline #f1f1f1;
+  color: #f1f1f1;
+}
+
+.menu a:active {
+  -webkit-text-decoration: underline #f1f1f1;
+  text-decoration: underline #f1f1f1;
+  color: #ab1b1b;
+}
+
+.hamburger-container {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.151);
+  cursor: pointer;
+}
+
+.hamburger-menu {
+  position: absolute;
+  top: 1.9rem;
+  right: 0.5rem;
+  width: 3rem;
+  height: 0.2rem;
+  background-color: white;
+}
+
+.hamburger-menu::after {
+  position: absolute;
+  content: "";
+  width: 3rem;
+  height: 0.2rem;
+  background-color: white;
+  cursor: pointer;
+  top: 1rem;
+  right: 0rem;
+  transition: 0.5s;
+}
+
+.hamburger-menu::before {
+  position: absolute;
+  content: "";
+  width: 3rem;
+  height: 0.2rem;
+  background-color: white;
+  cursor: pointer;
+  top: -1rem;
+  right: 0rem;
+  transition: 0.5s;
+}
+
+.hamburger-container {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.1529411765);
+  cursor: pointer;
+}
+
+.hamburger-background {
+  background-color: rgba(255, 255, 255, 0.431372549);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.hamburger-active .hamburger-menu::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.hamburger-active .hamburger-menu::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+.hamburger-active .hamburger-menu {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+footer {
+  margin: 20px auto;
+  max-width: 1500px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 1.8rem;
+  margin: 10px auto 0 auto;
+}
+
+.mainFooter {
+  margin: 50px auto 0 auto;
+}
+
+.socialsContainer ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.socialsContainer li {
+  background-color: #5e0cc2;
+  border-radius: 50%;
+  list-style: none;
+  margin: 10px 10px;
+  padding: 10px;
+}
+
+.socialsContainer a:hover > li {
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.socialsContainer a:active > li {
+  background-color: #ab1b1b;
+}
+
+.socialIcon {
+  margin: 10px auto;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialImage {
+  width: 30px;
 }/*# sourceMappingURL=App.css.map */
