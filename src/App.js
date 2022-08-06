@@ -19,7 +19,7 @@ function GithubUser({ name, avatar }) {
           alt="the dapper foxtrot sporting a happy smile! click to visit their git hub"
         />
       </a>
-      <h2 tabindex="0">(Excluding Forks - By Last Updated)</h2>
+      <h2 tabindex="0">(Excluding Forks - By Last Push)</h2>
       <h2 className="a11y">
         For my accessibility friends, these repos will be listed in alphabetical
         order by name.
@@ -41,7 +41,7 @@ function App() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://api.github.com/users/theDapperFoxtrot/repos?sort=updated`)
+    fetch(`https://api.github.com/users/theDapperFoxtrot/repos?sort=pushed`)
       .then((response) => response.json())
       .then(setData)
       .then(() => setLoading(false))
