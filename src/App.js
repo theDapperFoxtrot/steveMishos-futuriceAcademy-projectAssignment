@@ -73,8 +73,8 @@ function App() {
               <h4 tabindex="0" key={`description.${index}`}>
                 Description: {each.description ? each.description : "N/A"}
               </h4>
-              <h5 tabindex="0" key={`updated_at.${index}`}>
-                Updated at: {each.updated_at}
+              <h5 tabindex="0" key={`pushed_at.${index}`}>
+                Pushed at: {each.pushed_at}
               </h5>
               <a tabindex="0" key={`html_url.${index}`} href={each.html_url}>
                 <h4 tabindex="0">{each.html_url}</h4>
