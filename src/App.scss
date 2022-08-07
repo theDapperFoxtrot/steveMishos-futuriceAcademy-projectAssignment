@@ -3,6 +3,8 @@ html {
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-family: "Oswald", sans-serif;
   background-color: black;
   color: #f1f1f1;
@@ -39,6 +41,7 @@ a:hover {
 p {
   color: #f1f1f1;
   text-decoration: none;
+  font-size: 1.8rem;
 }
 
 .titleLink:hover {
@@ -292,6 +295,7 @@ footer p {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  padding: 0;
 }
 
 .socialsContainer li {
@@ -322,6 +326,10 @@ footer p {
 
 .socialImage {
   width: 2rem;
+}
+
+.tinyFont {
+  font-size: 1rem;
 }
 
 @media (min-width: 345px) {
