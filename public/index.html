@@ -5,18 +5,11 @@
     <link rel="icon" href="./github-152-289345.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="View theDapperFoxtrot's Repos on GitHub"
-    />
+    <meta name="description" content="View theDapperFoxtrot's Repos on GitHub" />
     <link rel="apple-touch-icon" href="./github-152-289345.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet" />
     <title>theDapperFoxtrot's Repos</title>
   </head>
   <body>
@@ -26,14 +19,10 @@
       <h2>Contact Me!</h2>
       <form name="contact" method="POST" data-netlify="true">
         <p>
-          <label class="formLabels">
-            Your Name: <input type="text" name="name" />
-          </label>
+          <label class="formLabels"> Your Name: <input type="text" name="name" /> </label>
         </p>
         <p>
-          <label class="formLabels">
-            Your Email: <input type="email" name="email" />
-          </label>
+          <label class="formLabels"> Your Email: <input type="email" name="email" /> </label>
         </p>
         <p class="formRoleSelect">
           <label class="formLabels">
@@ -46,9 +35,7 @@
           </label>
         </p>
         <p class="formMessage">
-          <label class="formLabels">
-            Message: <textarea name="message"></textarea>
-          </label>
+          <label class="formLabels"> Message: <textarea name="message"></textarea></label>
         </p>
         <p>
           <button class="formButton" type="submit">Send</button>
@@ -57,56 +44,24 @@
 
       <div class="socialsContainer">
         <ul>
-          <a
-            href="https://twitter.com/FoxtrotDapper"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://twitter.com/FoxtrotDapper" target="_blank" rel="noreferrer">
             <li class="socialIcon">
-              <img
-                class="socialImage"
-                src="./svg/twitter-brands.svg"
-                alt="the dapper foxtrot twitter"
-              />
+              <img class="socialImage" src="./svg/twitter-brands.svg" alt="the dapper foxtrot twitter" />
             </li>
           </a>
-          <a
-            href="https://github.com/theDapperFoxtrot"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://github.com/theDapperFoxtrot" target="_blank" rel="noreferrer">
             <li class="socialIcon">
-              <img
-                class="socialImage"
-                src="./svg/github-brands.svg"
-                alt="the dapper foxtrot git hub"
-              />
+              <img class="socialImage" src="./svg/github-brands.svg" alt="the dapper foxtrot git hub" />
             </li>
           </a>
-          <a
-            href="https://www.youtube.com/channel/UC3CshKcydQEdd2zMfd9UsAg"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://www.youtube.com/channel/UC3CshKcydQEdd2zMfd9UsAg" target="_blank" rel="noreferrer">
             <li class="socialIcon">
-              <img
-                class="socialImage"
-                src="./svg/icons8-youtube-64.svg"
-                alt="the dapper foxtrot on YouTube"
-              />
+              <img class="socialImage" src="./svg/icons8-youtube-64.svg" alt="the dapper foxtrot on YouTube" />
             </li>
           </a>
-          <a
-            href="https://www.twitch.tv/thedapperfoxtrot"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://www.twitch.tv/thedapperfoxtrot" target="_blank" rel="noreferrer">
             <li class="socialIcon">
-              <img
-                class="socialImage"
-                src="./svg/icons8-twitch-50.svg"
-                alt="the dapper foxtrot on Twitch"
-              />
+              <img class="socialImage" src="./svg/icons8-twitch-50.svg" alt="the dapper foxtrot on Twitch" />
             </li>
           </a>
         </ul>
@@ -114,5 +69,19 @@
       <p>© Copyright 2022 The Dapper Foxtrot. All Rights Reserved.</p>
       <p class="tinyFont">Made with HTML, CSS, and Vanilla JS</p>
     </footer>
+    <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
+    <script>
+      GitHubCalendar(".calendar", "theDapperFoxtrot");
+
+      // or enable responsive functionality:
+      GitHubCalendar(".calendar", "theDapperFoxtrot", { responsive: true });
+
+      // Use a proxy
+      GitHubCalendar(".calendar", "theDapperFoxtrot", {
+        proxy(theDapperFoxtrot) {
+          return fetch(`https://your-proxy.com/github?user=${theDapperFoxtrot}`);
+        },
+      }).then((r) => r.text());
+    </script>
   </body>
 </html>

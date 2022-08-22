@@ -8,31 +8,15 @@ function GithubUser({ name, avatar }) {
   return (
     <div>
       <h2>
-        <a
-          className="repoLink"
-          href="https://github.com/theDapperFoxtrot"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a className="repoLink" href="https://github.com/theDapperFoxtrot" target="_blank" rel="noreferrer">
           {name}'s (Steve) GitHub at-a-glance
         </a>
       </h2>
-      <a
-        href="https://github.com/theDapperFoxtrot"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <img
-          height="200px"
-          src={avatar}
-          alt="the dapper foxtrot sporting a happy smile! click to visit their git hub"
-        />
+      <a href="https://github.com/theDapperFoxtrot" target="_blank" rel="noreferrer">
+        <img height="200px" src={avatar} alt="the dapper foxtrot sporting a happy smile! click to visit their git hub" />
       </a>
       <h2 tabindex="0">(Excluding Forks - By Last Push)</h2>
-      <h2 className="a11y">
-        For my accessibility friends, these repos will be listed in alphabetical
-        order by name.
-      </h2>
+      <h2 className="a11y">For my accessibility friends, these repos will be listed in alphabetical order by name.</h2>
     </div>
   );
 }
@@ -113,18 +97,11 @@ function App() {
             </li>
           </ul>
         </nav>
-        <div
-          id="hamburger"
-          className="hamburger-container"
-          onClick={handleHamburger}
-        >
+        <div id="hamburger" className="hamburger-container" onClick={handleHamburger}>
           <div className="hamburger-menu"></div>
         </div>
       </header>
-      <GithubUser
-        name={data[0].owner.login}
-        avatar={data[0].owner.avatar_url}
-      />
+      <GithubUser name={data[0].owner.login} avatar={data[0].owner.avatar_url} />
 
       {/* Mapping over my repos to dynamically display them */}
       <GithubUserRepos
@@ -137,41 +114,19 @@ function App() {
                 Pushed at: {convert(each.pushed_at)}
               </h5>
               <h3 tabindex="0" key={`name.${index}`}>
-                <a
-                  tabindex="0"
-                  key={`html_url.${index}`}
-                  href={each.html_url}
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a tabindex="0" key={`html_url.${index}`} href={each.html_url} target="_blank" rel="noreferrer">
                   Name: {each.name}
                 </a>
               </h3>
               <h4 tabindex="0" key={`description.${index}`}>
                 Description: {each.description ? each.description : "N/A"}
               </h4>
-              <a
-                tabindex="0"
-                key={`html_url.${index}`}
-                href={each.html_url}
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a tabindex="0" key={`html_url.${index}`} href={each.html_url} target="_blank" rel="noreferrer">
                 <h4 tabindex="0">Repo Link</h4>
               </a>
               <h4 className="demoText">Demo:</h4>
-              <a
-                tabindex="0"
-                key={`homepage.${index}`}
-                href={each.homepage}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {each.homepage ? (
-                  each.homepage
-                ) : (
-                  <p>This demo currently is not live.</p>
-                )}
+              <a tabindex="0" key={`homepage.${index}`} href={each.homepage} target="_blank" rel="noreferrer">
+                {each.homepage ? each.homepage : <p>This demo currently is not live.</p>}
               </a>
             </div>
           ) : null,
